@@ -8,7 +8,12 @@ The executable allows to do 3 things :
 - push \  : decrement ptr, pushing it nearer to the beginning of buf
 - default : setting the value pointed by ptr to a given value and incrementing pointer, pushing it nearer to the end of buf, it is not already at the end
 
-The main idea is that the value of ptr is stored just before the beginning of buf.
+The idea is that the value of ptr is stored just before the beginning of buf.
+To check this, one can disassemble the main function with gdb :
+``` 
+gdb --args ./level1
+> disassemble main
+```
 
 So if we decrement ptr to point just before the beginning of buf by pushing '\', ptr points at itself, and we can change its value arbitrarily using the third option listed before.
  
